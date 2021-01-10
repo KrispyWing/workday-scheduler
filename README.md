@@ -14,7 +14,7 @@ This is a basic work day scheduler
 * Data that has been saved will be reloaded from local storage on page refresh
 * Each block is colour coded depending on if it is past present or future
 
-## Technolgies
+## Technologies
 Site was created using
 * HTML
 * CSS including Bootstrap and Google Fonts
