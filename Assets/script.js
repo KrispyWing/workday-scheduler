@@ -4,8 +4,6 @@ var showToday = function () {
   $("#currentDay").text(today);
 }
 
-var taskItem = {};
-
 // get task text and id when save button is clicked
 $(".saveBtn").on("click", function () {
   //get task text
@@ -19,15 +17,39 @@ $(".saveBtn").on("click", function () {
   localStorage.setItem(taskId, task);
 });
 
+//check time and colour code time-block
+// get current hour
+var currentHour = moment().hour();
+
+//loop through each time block to check status
+$(".time-block").each(function() {
+  //get time block hour
+  var taskHour = parseInt($(this).attr("id"));
+
+  //remove any existing classes
+  $(this).removeClass("past present future");
+
+  //check taskHour against currentHour and apply necessary class
+  if (taskHour < currentHour) {    
+    $(this).addClass("past");
+  }
+  else if (taskHour === currentHour) {
+    $(this).addClass("present");    
+  }
+  else if (taskHour > currentHour) {
+    $(this).addClass("future");
+  }
+});
+
 //load tasks from storage
-$("#9am .description").val(localStorage.getItem("9am"));
-$("#10am .description").val(localStorage.getItem("10am"));
-$("#11am .description").val(localStorage.getItem("11am"));
-$("#12pm .description").val(localStorage.getItem("12pm"));
-$("#1pm .description").val(localStorage.getItem("1pm"));
-$("#2pm .description").val(localStorage.getItem("2pm"));
-$("#3pm .description").val(localStorage.getItem("3pm"));
-$("#4pm .description").val(localStorage.getItem("4pm"));
-$("#5pmm .description").val(localStorage.getItem("5pm"));
+$("#9 .description").val(localStorage.getItem("9"));
+$("#10 .description").val(localStorage.getItem("10"));
+$("#11 .description").val(localStorage.getItem("11"));
+$("#12 .description").val(localStorage.getItem("12"));
+$("#13 .description").val(localStorage.getItem("13"));
+$("#14 .description").val(localStorage.getItem("14"));
+$("#15 .description").val(localStorage.getItem("15"));
+$("#16 .description").val(localStorage.getItem("16"));
+$("#17 .description").val(localStorage.getItem("17"));
 
 showToday();
